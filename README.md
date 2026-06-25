@@ -1,65 +1,90 @@
+<div align="center">
+
 # devbyshima/skills
 
+*Agent skills I build and actually use — one command to add them to any AI coding agent.*
+
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f)](https://agentskills.io)
+[![tests](https://github.com/devbyshima/skills/actions/workflows/test.yml/badge.svg)](https://github.com/devbyshima/skills/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Agent skills I've built and actually use — reusable capabilities for AI coding agents (Claude Code, Cursor, Copilot, Codex, and any [Agent-Skills](https://agentskills.io)-compatible harness). Each skill is a self-contained folder with a `SKILL.md` (instructions + metadata) plus any scripts/references/assets it needs. The agent reads a skill's name + description first and only loads the rest when it's relevant (progressive disclosure).
+[Quickstart](#quickstart) · [Skills](#skills) · [How it works](#how-it-works) · [Local development](#local-development) · [Contributing](CONTRIBUTING.md)
 
-## 🚀 Quickstart (30 seconds)
+</div>
+
+A growing collection of [**Agent Skills**](https://agentskills.io) — reusable capabilities that teach an AI coding agent (Claude Code, Cursor, Copilot, Codex, …) to do a specific job well. Each skill is a self-contained folder with a `SKILL.md`; the agent reads its name and description first and only loads the rest when the task calls for it, so skills stay cheap until they're needed.
+
+## Quickstart
 
 ```bash
-# install everything in this collection
+npx skills@latest add devbyshima/skills
+```
+
+That copies the skills into your agent's directory (`.claude/skills/` or `.agents/skills/`) — no manual setup. Then just describe what you want and the agent reaches for the right skill.
+
+> [!TIP]
+> Want only one? `npx skills@latest add devbyshima/skills --skill <name>`. Re-run `add` any time to update.
+
+## Skills
+
+| Skill | Category | Invocation | What it does |
+| --- | --- | --- | --- |
+| [`whiteboard`](skills/diagramming/whiteboard) | [diagramming](skills/diagramming) | model-invoked | Turns natural language into hand-drawn `.excalidraw` diagrams — sketches, flowcharts, architecture, ER/UML/sequence, mind maps — via a Python builder. Exports PNG/SVG locally, embeds AI/LLM brand logos, and can auto-layout a codebase's import or class graph. |
+
+*More skills and categories land here over time; the `add` command above keeps working as they're added.*
+
+## Installation
+
+Skills are managed with [`npx skills`](https://github.com/vercel-labs/skills) — think "npm for agent skills, with GitHub as the registry."
+
+```bash
+# the whole collection
 npx skills@latest add devbyshima/skills
 
-# …or just one skill
+# a single skill, by name…
 npx skills@latest add devbyshima/skills --skill whiteboard
 
-# …or a single skill by its direct path
+# …or by its direct path
 npx skills@latest add https://github.com/devbyshima/skills/tree/main/skills/diagramming/whiteboard
 ```
 
-[`npx skills`](https://github.com/vercel-labs/skills) is "npm, but for agent skills, with GitHub as the registry." It copies the skill into your agent's skills directory (`.claude/skills/` or `.agents/skills/`) — no manual setup. Re-run `add` to update.
-
 This repo also ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), so it doubles as a **Claude Code plugin** and is discoverable by any tool that reads the plugin manifest.
 
-## 🗂️ Skills
+> [!NOTE]
+> Skills run with your agent's full permissions. Skim a skill's `SKILL.md` before using it — same habit as reviewing any dependency.
 
-Browse by category (each category README splits **user-invoked** vs **model-invoked**):
+## How it works
 
-### [Diagramming](skills/diagramming) · *model-invoked*
-
-| Skill | What it does |
-|---|---|
-| [`whiteboard`](skills/diagramming/whiteboard) | Natural language → hand-drawn `.excalidraw` diagrams (sketches, flowcharts, architecture, ER/UML/sequence, mind maps) via a Python `Scene` builder; offline PNG/SVG export; can auto-layout a codebase's import/class graph. |
-
-*More categories and skills land here over time — the install commands above keep working as they're added.*
-
-## 🧱 Repository layout
-
-Skills are organized into **category** folders under `skills/` — the [catalog layout](https://github.com/vercel-labs/skills) the `skills` CLI discovers automatically:
+Every skill follows the [Agent Skills](https://agentskills.io) format and lives in its own folder:
 
 ```
 skills/
   <category>/
     <skill-name>/
       SKILL.md          # required — name + description frontmatter, then instructions
-      scripts/ · references/ · styles/ · data/ · tests/   # optional
+      scripts/ · references/ · styles/ · data/ · tests/   # optional bundled resources
     README.md           # category index (user- vs model-invoked)
-.claude-plugin/plugin.json   # plugin manifest (lists every skill)
-scripts/                     # dev helpers (list-skills, link-skills)
 ```
 
-## 🛠️ Local development
+- **Progressive disclosure** — the agent matches on the `description`, then reads `SKILL.md`, and only opens `references/` or runs `scripts/` when the work needs them.
+- **Self-contained** — a skill carries its own scripts and docs and resolves paths relative to itself, so it behaves the same wherever it's installed.
+- **Verified** — skills that ship scripts include a `tests/` suite; CI runs every `skills/**/tests/` on each push.
+
+## Local development
+
+Working on a skill in a clone of this repo:
 
 ```bash
 bash scripts/list-skills.sh    # list every skill: name — description
-bash scripts/link-skills.sh    # symlink all skills into ~/.claude/skills & ~/.agents/skills (git pull to update)
+bash scripts/link-skills.sh    # symlink all skills into ~/.claude/skills and ~/.agents/skills
 ```
 
-## 🤝 Contributing
+`link-skills.sh` symlinks rather than copies, so a `git pull` keeps your installed skills current. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CLAUDE.md](CLAUDE.md) for how to add a skill or category.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) (humans) and [CLAUDE.md](CLAUDE.md) (agents) for how to add a skill or category and the conventions each follows.
+---
 
-## 📄 License
+<div align="center">
 
-[MIT](LICENSE) © devbyshima. Individual skills may carry their own origin/attribution in their folder (e.g. `whiteboard` is adapted from the MIT-licensed [`drawio-skill`](https://github.com/Agents365-ai/drawio-skill)).
+MIT licensed · Built by [devbyshima](https://github.com/devbyshima)
+
+</div>
