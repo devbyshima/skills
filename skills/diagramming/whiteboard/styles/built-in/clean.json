@@ -1,0 +1,28 @@
+{
+  "$schema": "../schema.json",
+  "name": "clean",
+  "version": 1,
+  "default": false,
+  "source": { "type": "built-in" },
+  "confidence": "high",
+  "palette": {
+    "primary":   { "strokeColor": "#1864ab", "backgroundColor": "#d0ebff" },
+    "success":   { "strokeColor": "#2b8a3e", "backgroundColor": "#d3f9d8" },
+    "warning":   { "strokeColor": "#e67700", "backgroundColor": "#fff3bf" },
+    "accent":    { "strokeColor": "#d9480f", "backgroundColor": "#ffe8cc" },
+    "danger":    { "strokeColor": "#c92a2a", "backgroundColor": "#ffe3e3" },
+    "neutral":   { "strokeColor": "#343a40", "backgroundColor": "#f1f3f5" },
+    "secondary": { "strokeColor": "#862e9c", "backgroundColor": "#f3d9fa" }
+  },
+  "roles": {
+    "service": "primary", "database": "success", "queue": "warning",
+    "gateway": "accent", "error": "danger", "external": "neutral", "security": "secondary"
+  },
+  "shapes": {
+    "service": "rectangle", "database": "ellipse", "queue": "rectangle",
+    "decision": "diamond", "external": "rectangle", "container": "rectangle"
+  },
+  "font": { "family": "normal", "size": 20, "titleSize": 28 },
+  "edges": { "strokeStyle": "solid", "startArrowhead": null, "endArrowhead": "arrow", "dashedFor": [] },
+  "extras": { "roughness": 0, "fillStyle": "solid", "strokeWidth": 1 }
+}

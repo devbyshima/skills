@@ -1,0 +1,28 @@
+{
+  "$schema": "../schema.json",
+  "name": "sketch",
+  "version": 1,
+  "default": false,
+  "source": { "type": "built-in" },
+  "confidence": "high",
+  "palette": {
+    "primary":   { "strokeColor": "#1971c2", "backgroundColor": "#a5d8ff" },
+    "success":   { "strokeColor": "#2f9e44", "backgroundColor": "#b2f2bb" },
+    "warning":   { "strokeColor": "#f08c00", "backgroundColor": "#ffec99" },
+    "accent":    { "strokeColor": "#e8590c", "backgroundColor": "#ffd8a8" },
+    "danger":    { "strokeColor": "#e03131", "backgroundColor": "#ffc9c9" },
+    "neutral":   { "strokeColor": "#495057", "backgroundColor": "#e9ecef" },
+    "secondary": { "strokeColor": "#9c36b5", "backgroundColor": "#eebefa" }
+  },
+  "roles": {
+    "service": "primary", "database": "success", "queue": "warning",
+    "gateway": "accent", "error": "danger", "external": "neutral", "security": "secondary"
+  },
+  "shapes": {
+    "service": "rectangle", "database": "ellipse", "queue": "rectangle",
+    "decision": "diamond", "external": "rectangle", "container": "rectangle"
+  },
+  "font": { "family": "hand", "size": 20, "titleSize": 28 },
+  "edges": { "strokeStyle": "solid", "startArrowhead": null, "endArrowhead": "arrow", "dashedFor": ["optional"] },
+  "extras": { "roughness": 2, "fillStyle": "hachure", "strokeWidth": 2 }
+}

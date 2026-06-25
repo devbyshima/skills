@@ -1,0 +1,56 @@
+# Contributing
+
+This repo is a collection of [Agent Skills](https://agentskills.io). Each skill is a self-contained folder discovered by the [`skills` CLI](https://github.com/vercel-labs/skills).
+
+## Add a skill
+
+1. **Pick (or create) a category** under `skills/` — e.g. `skills/diagramming/`, `skills/writing/`, `skills/devops/`. Categories are just folders; group by what the skill *does*.
+
+2. **Create the skill folder** with at least a `SKILL.md`:
+
+   ```
+   skills/<category>/<skill-name>/
+     SKILL.md          # required
+     scripts/          # optional — executable helpers (python, node, …)
+     references/       # optional — docs the agent reads on demand
+     styles/ · data/ · assets/   # optional
+   ```
+
+   The `skills` CLI walks `skills/<category>/<name>/SKILL.md` (catalog layout) as well as the flat `skills/<name>/SKILL.md` layout, so either nesting works and stays installable.
+
+3. **Write `SKILL.md`** with YAML frontmatter — `name` and `description` are required (the description is the trigger the agent matches on, so make it specific). Keep the body lean and push detail into `references/` (progressive disclosure: the agent only reads references when needed).
+
+   ```markdown
+   ---
+   name: my-skill
+   description: Use when the user wants to …  (be specific — this is the trigger)
+   license: MIT
+   ---
+
+   # My Skill
+
+   ## Overview
+   …
+   ```
+
+4. **Keep it self-contained.** Scripts should resolve paths relative to their own location (`__dirname` / `os.path.dirname(__file__)`) so the skill works wherever it's installed. Heavy/optional dependencies should degrade gracefully and be documented.
+
+5. **Test it.** If the skill ships scripts, add a `tests/` folder. CI (`.github/workflows/test.yml`) runs every `skills/**/tests/test_scripts.py`.
+
+6. **Register it** in the catalog table in [`README.md`](README.md).
+
+## Conventions
+
+- One concern per skill; name folders in `kebab-case`.
+- Prefer the standard library / tools the user already has; document any extra dependency and make it optional where possible.
+- Don't commit `node_modules/`, build caches, or lockfiles (see `.gitignore`).
+- If a skill is adapted from another project, keep the original license/attribution in the skill folder.
+
+## Install a skill while developing
+
+The `skills` CLI accepts a local path, so you can test discovery before pushing:
+
+```bash
+npx skills add /path/to/this/repo            # discovers all skills
+npx skills add /path/to/this/repo --skill my-skill
+```
