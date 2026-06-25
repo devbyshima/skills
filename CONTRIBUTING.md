@@ -37,7 +37,12 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
 
 5. **Test it.** If the skill ships scripts, add a `tests/` folder. CI (`.github/workflows/test.yml`) runs every `skills/**/tests/test_scripts.py`.
 
-6. **Register it** in the catalog table in [`README.md`](README.md).
+6. **Register it in three places:**
+   - [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) → add the skill path to the `skills` array
+   - `skills/<category>/README.md` → add it under **User-invoked** or **Model-invoked**
+   - root [`README.md`](README.md) → add a row to the catalog table
+
+   Then `bash scripts/list-skills.sh` to confirm it's discovered.
 
 ## Conventions
 
@@ -45,6 +50,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
 - Prefer the standard library / tools the user already has; document any extra dependency and make it optional where possible.
 - Don't commit `node_modules/`, build caches, or lockfiles (see `.gitignore`).
 - If a skill is adapted from another project, keep the original license/attribution in the skill folder.
+- **Retire** a skill by moving it under `skills/deprecated/` (with a note) rather than deleting it.
 
 ## Install a skill while developing
 

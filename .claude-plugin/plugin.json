@@ -1,0 +1,11 @@
+{
+  "name": "devbyshima-skills",
+  "description": "Agent skills collection by devbyshima",
+  "version": "0.1.0",
+  "author": { "name": "devbyshima", "url": "https://github.com/devbyshima" },
+  "homepage": "https://github.com/devbyshima/skills",
+  "license": "MIT",
+  "skills": [
+    "./skills/diagramming/whiteboard"
+  ]
+}

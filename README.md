@@ -3,30 +3,36 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f)](https://agentskills.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A collection of [**Agent Skills**](https://agentskills.io) I've built — reusable capabilities for AI coding agents (Claude Code, Cursor, Copilot, Codex, and any Agent-Skills-compatible CLI). Each skill is a self-contained folder with a `SKILL.md` (instructions + metadata) and any scripts/references/assets it needs. Agents load a skill's name + description first, and only read the rest when it's relevant (progressive disclosure).
+Agent skills I've built and actually use — reusable capabilities for AI coding agents (Claude Code, Cursor, Copilot, Codex, and any [Agent-Skills](https://agentskills.io)-compatible harness). Each skill is a self-contained folder with a `SKILL.md` (instructions + metadata) plus any scripts/references/assets it needs. The agent reads a skill's name + description first and only loads the rest when it's relevant (progressive disclosure).
 
-## 📦 Install
-
-Skills are installed with [`npx skills`](https://github.com/vercel-labs/skills) — think "npm, but for agent skills, with GitHub as the registry."
+## 🚀 Quickstart (30 seconds)
 
 ```bash
-# install every skill in this collection
-npx skills add devbyshima/skills
+# install everything in this collection
+npx skills@latest add devbyshima/skills
 
-# install one skill by name
-npx skills add devbyshima/skills --skill whiteboard
+# …or just one skill
+npx skills@latest add devbyshima/skills --skill whiteboard
 
-# install one skill by its direct path
-npx skills add https://github.com/devbyshima/skills/tree/main/skills/diagramming/whiteboard
+# …or a single skill by its direct path
+npx skills@latest add https://github.com/devbyshima/skills/tree/main/skills/diagramming/whiteboard
 ```
 
-The CLI copies the skill into your agent's skills directory (`.claude/skills/` or `.agents/skills/`) — no manual setup. Re-run `add` to update.
+[`npx skills`](https://github.com/vercel-labs/skills) is "npm, but for agent skills, with GitHub as the registry." It copies the skill into your agent's skills directory (`.claude/skills/` or `.agents/skills/`) — no manual setup. Re-run `add` to update.
 
-## 🗂️ Catalog
+This repo also ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), so it doubles as a **Claude Code plugin** and is discoverable by any tool that reads the plugin manifest.
 
-| Category | Skill | What it does |
-|---|---|---|
-| **diagramming** | [`whiteboard`](skills/diagramming/whiteboard) | Turns natural language into hand-drawn `.excalidraw` diagrams (sketches, flowcharts, architecture, ER/UML/sequence, mind maps) via a Python builder; exports PNG/SVG locally; can auto-layout a codebase's import/class graph. |
+## 🗂️ Skills
+
+Browse by category (each category README splits **user-invoked** vs **model-invoked**):
+
+### [Diagramming](skills/diagramming) · *model-invoked*
+
+| Skill | What it does |
+|---|---|
+| [`whiteboard`](skills/diagramming/whiteboard) | Natural language → hand-drawn `.excalidraw` diagrams (sketches, flowcharts, architecture, ER/UML/sequence, mind maps) via a Python `Scene` builder; offline PNG/SVG export; can auto-layout a codebase's import/class graph. |
+
+*More categories and skills land here over time — the install commands above keep working as they're added.*
 
 ## 🧱 Repository layout
 
@@ -37,17 +43,23 @@ skills/
   <category>/
     <skill-name>/
       SKILL.md          # required — name + description frontmatter, then instructions
-      scripts/          # optional — executable helpers
-      references/       # optional — docs loaded on demand
-      styles/ · data/   # optional — assets
+      scripts/ · references/ · styles/ · data/ · tests/   # optional
+    README.md           # category index (user- vs model-invoked)
+.claude-plugin/plugin.json   # plugin manifest (lists every skill)
+scripts/                     # dev helpers (list-skills, link-skills)
 ```
 
-Adding more skills (and more categories) just means adding folders here — the install commands above keep working.
+## 🛠️ Local development
+
+```bash
+bash scripts/list-skills.sh    # list every skill: name — description
+bash scripts/link-skills.sh    # symlink all skills into ~/.claude/skills & ~/.agents/skills (git pull to update)
+```
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a new skill or category and the conventions each skill follows.
+See [CONTRIBUTING.md](CONTRIBUTING.md) (humans) and [CLAUDE.md](CLAUDE.md) (agents) for how to add a skill or category and the conventions each follows.
 
 ## 📄 License
 
-[MIT](LICENSE) © devbyshima. Individual skills may note their own origin/attribution in their folder (e.g. `whiteboard` is adapted from the MIT-licensed `drawio-skill`).
+[MIT](LICENSE) © devbyshima. Individual skills may carry their own origin/attribution in their folder (e.g. `whiteboard` is adapted from the MIT-licensed [`drawio-skill`](https://github.com/Agents365-ai/drawio-skill)).
