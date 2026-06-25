@@ -60,3 +60,12 @@ The `skills` CLI accepts a local path, so you can test discovery before pushing:
 npx skills add /path/to/this/repo            # discovers all skills
 npx skills add /path/to/this/repo --skill my-skill
 ```
+
+## Releasing
+
+Installs read the repo at `HEAD`, so a release is only for tagging a snapshot. Push a `v*` tag and `.github/workflows/release.yml` runs the tests and publishes a GitHub Release with auto-generated notes:
+
+```bash
+git tag v0.2.0
+git push origin v0.2.0
+```
