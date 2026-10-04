@@ -24,7 +24,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
    ---
    name: my-skill
    description: Use when the user wants to …  (be specific — this is the trigger)
-   license: MIT
+   license: PolyForm-Noncommercial-1.0.0
    ---
 
    # My Skill

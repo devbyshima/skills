@@ -6,7 +6,7 @@
 
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f)](https://agentskills.io)
 [![tests](https://github.com/devbyshima/skills/actions/workflows/test.yml/badge.svg)](https://github.com/devbyshima/skills/actions/workflows/test.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/License-PolyForm%20Noncommercial-yellow.svg)](LICENSE)
 
 [Quickstart](#quickstart) · [Skills](#skills) · [How it works](#how-it-works) · [Local development](#local-development) · [Contributing](CONTRIBUTING.md)
 
@@ -85,6 +85,6 @@ bash scripts/link-skills.sh    # symlink all skills into ~/.claude/skills and ~/
 
 <div align="center">
 
-MIT licensed · Built by [devbyshima](https://github.com/devbyshima)
+PolyForm Noncommercial licensed (adapted skills keep their own license) · Built by [devbyshima](https://github.com/devbyshima)
 
 </div>
