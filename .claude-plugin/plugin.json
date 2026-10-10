@@ -6,6 +6,7 @@
   "homepage": "https://github.com/devbyshima/skills",
   "license": "PolyForm-Noncommercial-1.0.0",
   "skills": [
+    "./skills/design/tasteful-icons",
     "./skills/diagramming/whiteboard"
   ]
 }

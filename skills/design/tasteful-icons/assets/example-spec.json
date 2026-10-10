@@ -1,0 +1,12 @@
+{
+  "icons": [
+    {"name": "places-teal", "preset": "pin", "color": "#12C9A6", "title": "Places"},
+    {"name": "events-purple", "preset": "calendar", "color": "#7B4DFF", "title": "Events"},
+    {"name": "mail", "title": "Mail", "color": "#FF3B30",
+     "glyph": "M160 150H352A56 56 0 0 1 408 206V318A56 56 0 0 1 352 374H160A56 56 0 0 1 104 318V206A56 56 0 0 1 160 150Z",
+     "marks": [{"d": "M160 214L256 282L352 214", "stroke": 26}]},
+    {"name": "messages", "title": "Messages", "color": "#2F7BFF",
+     "glyph": "M256 116C350 116 418 172 418 246C418 320 350 376 256 376C238 376 221 374 205 370L138 400L150 342C116 318 94 284 94 246C94 172 162 116 256 116Z",
+     "marks": [{"d": "M190 246A18 18 0 1 1 190 246.01Z", "fill": true}, {"d": "M256 246A18 18 0 1 1 256 246.01Z", "fill": true}, {"d": "M322 246A18 18 0 1 1 322 246.01Z", "fill": true}]}
+  ]
+}
