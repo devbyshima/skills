@@ -1,7 +1,0 @@
-node_modules/
-skills/*/node_modules/
-skills/*/scripts/.cache/
-package-lock.json
-*.log
-.DS_Store
-__pycache__/

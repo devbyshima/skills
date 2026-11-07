@@ -29,7 +29,6 @@ That copies the skills into your agent's directory (`.claude/skills/` or `.agent
 
 | Skill | Category | Invocation | What it does |
 | --- | --- | --- | --- |
-| [`whiteboard`](skills/diagramming/whiteboard) | [diagramming](skills/diagramming) | model-invoked | Turns natural language into hand-drawn `.excalidraw` diagrams — sketches, flowcharts, architecture, ER/UML/sequence, mind maps — via a Python builder. Exports PNG/SVG locally, embeds AI/LLM brand logos, and can auto-layout a codebase's import or class graph. |
 | [`tasteful-icons`](skills/design/tasteful-icons) | [design](skills/design) | model-invoked | Generates app and integration icons in a soft frosted-glass squircle style: a saturated superellipse tile with a milky white glass glyph, bright edge and colored light pooling. Recolors ready-made glyphs from one base color or draws new ones from SVG paths, and exports SVG + PNG via a Python script. |
 
 *More skills and categories land here over time; the `add` command above keeps working as they're added.*
@@ -43,10 +42,10 @@ Skills are managed with [`npx skills`](https://github.com/vercel-labs/skills) �
 npx skills@latest add devbyshima/skills
 
 # a single skill, by name…
-npx skills@latest add devbyshima/skills --skill whiteboard
+npx skills@latest add devbyshima/skills --skill tasteful-icons
 
 # …or by its direct path
-npx skills@latest add https://github.com/devbyshima/skills/tree/main/skills/diagramming/whiteboard
+npx skills@latest add https://github.com/devbyshima/skills/tree/main/skills/design/tasteful-icons
 ```
 
 This repo also ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), so it doubles as a **Claude Code plugin** and is discoverable by any tool that reads the plugin manifest.
