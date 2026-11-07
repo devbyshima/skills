@@ -40,7 +40,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
 6. **Register it in three places:**
    - [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) → add the skill path to the `skills` array
    - `skills/<category>/README.md` → add it under **User-invoked** or **Model-invoked**
-   - root [`README.md`](README.md) → add a row to the skills table (one short sentence; keep the README minimal)
+   - root [`README.md`](README.md) → add a bullet to the Reference list (one short sentence; keep the README minimal)
 
    Then `bash scripts/list-skills.sh` to confirm it's discovered.
 
