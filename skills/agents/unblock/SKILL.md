@@ -3,6 +3,7 @@ name: unblock
 description: Audit a long-running agent project and find the constraint slowing it down.
 disable-model-invocation: true
 argument-hint: "The project or run to audit (defaults to this repo)"
+license: PolyForm-Noncommercial-1.0.0
 ---
 
 You are auditing a long-running agent project. In long runs the human's job is a manager's, not a reviewer's: remove what blocks the agents. Every system has one **constraint**, the step everything else queues behind. Find it and widen it, and the next one surfaces.

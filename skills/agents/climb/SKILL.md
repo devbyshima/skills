@@ -1,6 +1,7 @@
 ---
 name: climb
 description: Make a big goal climbable, with one verifier command and a goal prompt an agent can run on for days. Use when the user wants a long or overnight run, a hill climb, or says "don't stop until".
+license: PolyForm-Noncommercial-1.0.0
 ---
 
 # Climb

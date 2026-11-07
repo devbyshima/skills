@@ -4,7 +4,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
 
 ## Add a skill
 
-1. **Pick (or create) a category** under `skills/` — e.g. `skills/diagramming/`, `skills/writing/`, `skills/devops/`. Categories are just folders; group by what the skill *does*.
+1. **Pick (or create) a category** under `skills/` — e.g. `skills/agents/`, `skills/writing/`, `skills/devops/`. Categories are just folders; group by what the skill *does*.
 
 2. **Create the skill folder** with at least a `SKILL.md`:
 
@@ -13,7 +13,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
      SKILL.md          # required
      scripts/          # optional — executable helpers (python, node, …)
      references/       # optional — docs the agent reads on demand
-     styles/ · data/ · assets/   # optional
+     assets/           # optional
    ```
 
    The `skills` CLI walks `skills/<category>/<name>/SKILL.md` (catalog layout) as well as the flat `skills/<name>/SKILL.md` layout, so either nesting works and stays installable.
@@ -40,7 +40,7 @@ This repo is a collection of [Agent Skills](https://agentskills.io). Each skill 
 6. **Register it in three places:**
    - [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) → add the skill path to the `skills` array
    - `skills/<category>/README.md` → add it under **User-invoked** or **Model-invoked**
-   - root [`README.md`](README.md) → add a row to the catalog table
+   - root [`README.md`](README.md) → add a row to the skills table (one short sentence; keep the README minimal)
 
    Then `bash scripts/list-skills.sh` to confirm it's discovered.
 
@@ -59,6 +59,13 @@ The `skills` CLI accepts a local path, so you can test discovery before pushing:
 ```bash
 npx skills add /path/to/this/repo            # discovers all skills
 npx skills add /path/to/this/repo --skill my-skill
+```
+
+Or symlink every skill so a `git pull` keeps them current, and list what is discovered:
+
+```bash
+bash scripts/link-skills.sh    # into ~/.claude/skills and ~/.agents/skills
+bash scripts/list-skills.sh    # name and description of each skill
 ```
 
 ## Releasing

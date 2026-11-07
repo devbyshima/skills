@@ -18,12 +18,13 @@ scripts/link-skills.sh              # symlink skills into ~/.claude/skills & ~/.
 3. Wire it up in **three places** (all are checked by reviewers/CI):
    - `.claude-plugin/plugin.json` → add the skill path to the `skills` array
    - `skills/<category>/README.md` → add it under User-invoked or Model-invoked
-   - root `README.md` → add a row to the catalog table
+   - root `README.md` → add a row to the skills table
 4. `bash scripts/list-skills.sh` to sanity-check discovery; run the skill's tests (`python3 skills/<category>/<name>/tests/test_scripts.py`).
 
 ## Conventions
 
 - `kebab-case` folder names; one concern per skill.
+- Keep `README.md` concise and minimal: one table row per skill, one short sentence each. Detail goes in the skill or its category README.
 - Don't commit `node_modules/`, `scripts/.cache/`, or lockfiles (see `.gitignore`).
 - Retire a skill by moving it under `skills/deprecated/` rather than deleting it.
 - If a skill is adapted from another project, keep that project's license/attribution in the skill folder.

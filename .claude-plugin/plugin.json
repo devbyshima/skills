@@ -1,7 +1,7 @@
 {
   "name": "devbyshima-skills",
   "description": "Agent skills collection by devbyshima",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": { "name": "devbyshima", "url": "https://github.com/devbyshima" },
   "homepage": "https://github.com/devbyshima/skills",
   "license": "PolyForm-Noncommercial-1.0.0",

@@ -1,4 +1,4 @@
-# dependencies & build caches (skills install their own render deps on demand)
+# dependencies & build caches
 node_modules/
 **/node_modules/
 **/scripts/.cache/

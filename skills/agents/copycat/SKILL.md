@@ -1,6 +1,7 @@
 ---
 name: copycat
 description: Port or rewrite an existing tool with the original as the oracle, then make it faster. Use when the user wants to rewrite something in another language, build a drop-in replacement, or match a tool's output exactly.
+license: PolyForm-Noncommercial-1.0.0
 ---
 
 # Copycat

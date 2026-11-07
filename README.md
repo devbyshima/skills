@@ -1,93 +1,19 @@
-<div align="center">
-
 # devbyshima/skills
 
-*Agent skills I build and actually use — one command to add them to any AI coding agent.*
-
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f)](https://agentskills.io)
-[![tests](https://github.com/devbyshima/skills/actions/workflows/test.yml/badge.svg)](https://github.com/devbyshima/skills/actions/workflows/test.yml)
-[![License: PolyForm Noncommercial](https://img.shields.io/badge/License-PolyForm%20Noncommercial-yellow.svg)](LICENSE)
-
-[Quickstart](#quickstart) · [Skills](#skills) · [How it works](#how-it-works) · [Local development](#local-development) · [Contributing](CONTRIBUTING.md)
-
-</div>
-
-A growing collection of [**Agent Skills**](https://agentskills.io) — reusable capabilities that teach an AI coding agent (Claude Code, Cursor, Copilot, Codex, …) to do a specific job well. Each skill is a self-contained folder with a `SKILL.md`; the agent reads its name and description first and only loads the rest when the task calls for it, so skills stay cheap until they're needed.
-
-## Quickstart
+Agent skills I build and use.
 
 ```bash
-npx skills@latest add devbyshima/skills
+npx skills@latest add devbyshima/skills                 # all
+npx skills@latest add devbyshima/skills --skill <name>  # one
 ```
 
-That copies the skills into your agent's directory (`.claude/skills/` or `.agents/skills/`) — no manual setup. Then just describe what you want and the agent reaches for the right skill.
+| Skill | What it does |
+| --- | --- |
+| [`climb`](skills/agents/climb) | Turns a big goal into one `./verify` command and a `GOAL.md` an agent can run on for days. Uses `copycat` for ports. |
+| [`copycat`](skills/agents/copycat) | Ports a tool against the original as the oracle, then makes it faster. |
+| [`unblock`](skills/agents/unblock) | `/unblock` finds the constraint slowing a long agent run. |
+| [`tasteful-icons`](skills/design/tasteful-icons) | Frosted-glass squircle app icons, exported as SVG and PNG. |
 
-> [!TIP]
-> Want only one? `npx skills@latest add devbyshima/skills --skill <name>`. Re-run `add` any time to update.
+To add a skill, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Skills
-
-| Skill | Category | Invocation | What it does |
-| --- | --- | --- | --- |
-| [`climb`](skills/agents/climb) | [agents](skills/agents) | model-invoked | Makes a big goal climbable for a long or overnight agent run: pins the target and reference, builds one `./verify` command that scores it (oracle, threshold, properties or a judge panel), closes the ways to game the score, and writes a `GOAL.md` the agent can run on for days. |
-| [`copycat`](skills/agents/copycat) | [agents](skills/agents) | model-invoked | Ports or rewrites an existing tool with the original as the oracle: pins it, builds a tiered real-world corpus, records goldens and mutations, and ships a verifier that diffs the port and clusters failures biggest first. Then makes the port faster without giving up parity. |
-| [`unblock`](skills/agents/unblock) | [agents](skills/agents) | user-invoked | `/unblock` audits a long-running agent project: measures rate, wait ratio and capacity from git, progress notes and build records, then names the one constraint slowing the run and how to widen it. Read-only. |
-| [`tasteful-icons`](skills/design/tasteful-icons) | [design](skills/design) | model-invoked | Generates app and integration icons in a soft frosted-glass squircle style: a saturated superellipse tile with a milky white glass glyph, bright edge and colored light pooling. Recolors ready-made glyphs from one base color or draws new ones from SVG paths, and exports SVG + PNG via a Python script. |
-
-*More skills and categories land here over time; the `add` command above keeps working as they're added.*
-
-## Installation
-
-Skills are managed with [`npx skills`](https://github.com/vercel-labs/skills) — think "npm for agent skills, with GitHub as the registry."
-
-```bash
-# the whole collection
-npx skills@latest add devbyshima/skills
-
-# a single skill, by name…
-npx skills@latest add devbyshima/skills --skill tasteful-icons
-
-# …or by its direct path
-npx skills@latest add https://github.com/devbyshima/skills/tree/main/skills/design/tasteful-icons
-```
-
-This repo also ships a [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json), so it doubles as a **Claude Code plugin** and is discoverable by any tool that reads the plugin manifest.
-
-> [!NOTE]
-> Skills run with your agent's full permissions. Skim a skill's `SKILL.md` before using it — same habit as reviewing any dependency.
-
-## How it works
-
-Every skill follows the [Agent Skills](https://agentskills.io) format and lives in its own folder:
-
-```
-skills/
-  <category>/
-    <skill-name>/
-      SKILL.md          # required — name + description frontmatter, then instructions
-      scripts/ · references/ · styles/ · data/ · tests/   # optional bundled resources
-    README.md           # category index (user- vs model-invoked)
-```
-
-- **Progressive disclosure** — the agent matches on the `description`, then reads `SKILL.md`, and only opens `references/` or runs `scripts/` when the work needs them.
-- **Self-contained** — a skill carries its own scripts and docs and resolves paths relative to itself, so it behaves the same wherever it's installed.
-- **Verified** — skills that ship scripts include a `tests/` suite; CI runs every `skills/**/tests/` on each push.
-
-## Local development
-
-Working on a skill in a clone of this repo:
-
-```bash
-bash scripts/list-skills.sh    # list every skill: name — description
-bash scripts/link-skills.sh    # symlink all skills into ~/.claude/skills and ~/.agents/skills
-```
-
-`link-skills.sh` symlinks rather than copies, so a `git pull` keeps your installed skills current. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CLAUDE.md](CLAUDE.md) for how to add a skill or category.
-
----
-
-<div align="center">
-
-PolyForm Noncommercial licensed (adapted skills keep their own license) · Built by [devbyshima](https://github.com/devbyshima)
-
-</div>
+[PolyForm Noncommercial 1.0.0](LICENSE): free for non-commercial use.
