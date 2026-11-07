@@ -8,7 +8,6 @@
   "skills": [
     "./skills/agents/climb",
     "./skills/agents/copycat",
-    "./skills/agents/unblock",
-    "./skills/design/tasteful-icons"
+    "./skills/agents/unblock"
   ]
 }

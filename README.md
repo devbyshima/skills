@@ -30,6 +30,4 @@ Most of the work is building that check, closing the ways to cheat it, and notic
 - **[climb](./skills/agents/climb/SKILL.md)**: Turn a big goal into one `./verify` command and a `GOAL.md` an agent can run on for days.
 - **[copycat](./skills/agents/copycat/SKILL.md)**: Port or rewrite a tool with the original as the oracle, then make it faster. `climb` uses it for ports.
 - **[unblock](./skills/agents/unblock/SKILL.md)**: Run `/unblock` on a long run to find the one thing slowing it down.
-- **[tasteful-icons](./skills/design/tasteful-icons/SKILL.md)**: App and integration icons in a frosted-glass squircle style, exported as SVG and PNG.
-
 [PolyForm Noncommercial 1.0.0](LICENSE): free for non-commercial use.
