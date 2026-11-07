@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.svg">
+  <img width="480" alt="Skills for Building with Agents" src=".github/assets/banner-light.svg">
+</picture>
+
 # Skills for Building with Agents
 
 [![skills.sh](https://skills.sh/b/devbyshima/skills)](https://skills.sh/devbyshima/skills)
