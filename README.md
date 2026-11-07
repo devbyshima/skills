@@ -29,6 +29,9 @@ That copies the skills into your agent's directory (`.claude/skills/` or `.agent
 
 | Skill | Category | Invocation | What it does |
 | --- | --- | --- | --- |
+| [`climb`](skills/agents/climb) | [agents](skills/agents) | model-invoked | Makes a big goal climbable for a long or overnight agent run: pins the target and reference, builds one `./verify` command that scores it (oracle, threshold, properties or a judge panel), closes the ways to game the score, and writes a `GOAL.md` the agent can run on for days. |
+| [`copycat`](skills/agents/copycat) | [agents](skills/agents) | model-invoked | Ports or rewrites an existing tool with the original as the oracle: pins it, builds a tiered real-world corpus, records goldens and mutations, and ships a verifier that diffs the port and clusters failures biggest first. Then makes the port faster without giving up parity. |
+| [`unblock`](skills/agents/unblock) | [agents](skills/agents) | user-invoked | `/unblock` audits a long-running agent project: measures rate, wait ratio and capacity from git, progress notes and build records, then names the one constraint slowing the run and how to widen it. Read-only. |
 | [`tasteful-icons`](skills/design/tasteful-icons) | [design](skills/design) | model-invoked | Generates app and integration icons in a soft frosted-glass squircle style: a saturated superellipse tile with a milky white glass glyph, bright edge and colored light pooling. Recolors ready-made glyphs from one base color or draws new ones from SVG paths, and exports SVG + PNG via a Python script. |
 
 *More skills and categories land here over time; the `add` command above keeps working as they're added.*

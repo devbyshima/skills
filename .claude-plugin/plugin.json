@@ -6,6 +6,9 @@
   "homepage": "https://github.com/devbyshima/skills",
   "license": "PolyForm-Noncommercial-1.0.0",
   "skills": [
+    "./skills/agents/climb",
+    "./skills/agents/copycat",
+    "./skills/agents/unblock",
     "./skills/design/tasteful-icons"
   ]
 }
