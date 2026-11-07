@@ -41,7 +41,7 @@ Wrap it as `./verify`: it prints a score and exits 0 only at the destination. Wh
 
 - [ ] `./verify` has run against the current state (show the output).
 - [ ] The reference scores as passing, and a deliberately broken build scores as failing.
-- [ ] Goldens, corpus and rubrics sit outside the agent's write scope.
+- [ ] Goldens, corpus and rubrics sit outside the agent's write scope, or the verifier hashes them and refuses to score when they change (copycat's `./verify` does).
 - [ ] Full and fast runtimes are measured and written down.
 
 ## Phase 3: Find the gaming paths

@@ -33,9 +33,9 @@ Clean code rarely reaches error paths. `mutate --seed N` makes realistic edits t
 
 ## Phase 5: Build the harness
 
-Copy [scripts/verify.template.py](scripts/verify.template.py) to `./verify` and fill in its config block. It:
+Copy [scripts/verify.template.py](scripts/verify.template.py) to `./verify`, make it executable (`chmod +x verify`) and fill in its config block. It:
 
-- records goldens from the oracle (`--record`)
+- records goldens from the oracle (`--record`) and **seals** the tier: a hash of every corpus file and golden. Scoring refuses to run (exit 2) when either has changed, and every score line ends with the seal's digest
 - runs the port on each case, normalizes, and diffs against the goldens
 - prints the pass rate overall and per category
 - **clusters** failures by their first differing line and prints the biggest first, so the agent always knows what to fix next
@@ -46,13 +46,14 @@ Copy [scripts/verify.template.py](scripts/verify.template.py) to `./verify` and 
 - [ ] `./verify --tier smoke` has run against the port (show the output).
 - [ ] Pointing `PORT_CMD` at the oracle itself scores 100%.
 - [ ] A deliberately broken port scores below 100% and its cluster names the break.
+- [ ] Editing one golden makes `./verify` refuse to score.
 
 ## Phase 6: Climb
 
 - Work the biggest cluster first; one fix usually clears many cases.
 - The full-tier pass rate is a **ratchet**: a change that lowers it is reverted.
 - Commit each gain with the pass rate in the message, and append each run to `PROGRESS.md`.
-- Every input takes the same code path, and goldens stay as recorded. When the oracle itself looks wrong, record the case in `KNOWN_DIVERGENCES.md` for the user to rule on.
+- Every input takes the same code path, and goldens stay as recorded. A new seal digest in `PROGRESS.md` means someone re-recorded; only the user does that. When the oracle itself looks wrong, record the case in `KNOWN_DIVERGENCES.md` for the user to rule on.
 - When builds of the port take minutes, the build becomes the bottleneck. Give parallel agents a build queue or lock, and a snapshot of a warm build environment to start from.
 
 Done when the full tier, mutations included, passes at 100%, or every remaining failure is recorded in `KNOWN_DIVERGENCES.md`.
