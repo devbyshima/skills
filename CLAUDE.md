@@ -9,6 +9,7 @@ skills/<category>/<name>/SKILL.md   # each skill — self-contained folder
 .claude-plugin/plugin.json          # plugin manifest (lists every skill path)
 scripts/list-skills.sh              # list all skills
 scripts/link-skills.sh              # symlink skills into ~/.claude/skills & ~/.agents/skills for local dev
+CHANGELOG.md                        # every change people would notice, newest first; new ones go under Unreleased
 ```
 
 ## Adding or changing a skill
@@ -20,6 +21,7 @@ scripts/link-skills.sh              # symlink skills into ~/.claude/skills & ~/.
    - `skills/<category>/README.md` → add it under User-invoked or Model-invoked
    - root `README.md` → add a bullet to the Reference list
 4. `bash scripts/list-skills.sh` to sanity-check discovery; run the skill's tests (`python3 skills/<category>/<name>/tests/test_scripts.py`).
+5. Add a line under `## [Unreleased]` in `CHANGELOG.md` for anything people using the skill would notice.
 
 ## Conventions
 
